@@ -5,10 +5,11 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
+import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 
 @Repository
 interface PersonRepo : JpaRepository<Person, Long> {
-    @Query(nativeQuery = true, value = "SELECT * from Person where address->>'country' = :country")
-    fun findByCountry(country:String, paging: Pageable): Page<Person>
+    @Query("SELECT * FROM Person WHERE (:country = '' OR address->>'country' = :country)", nativeQuery = true)
+    fun findByCountry(@Param("country") country:String = "", paging: Pageable? = null): Page<Person>
 }

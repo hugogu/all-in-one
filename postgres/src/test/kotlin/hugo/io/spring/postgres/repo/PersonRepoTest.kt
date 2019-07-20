@@ -19,7 +19,13 @@ class PersonRepoTest {
     @Test
     fun loadingTest() {
         personRepo.save(Person("number").apply { address = Address(country = "China") })
-        val person = personRepo.findByCountry("China", PageRequest.of(0, 10))
+        var person = personRepo.findByCountry("China", PageRequest.of(0, 10))
+        assertNotNull(person)
+
+        person = personRepo.findByCountry("China")
+        assertNotNull(person)
+
+        person = personRepo.findByCountry()
         assertNotNull(person)
     }
 }
