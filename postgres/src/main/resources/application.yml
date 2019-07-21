@@ -19,3 +19,6 @@ spring:
           lob:
             non_contextual_creation: true
     open-in-view: true
+  data:
+    rest:
+      basePath: /api
