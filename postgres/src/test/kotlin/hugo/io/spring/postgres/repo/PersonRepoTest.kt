@@ -17,7 +17,7 @@ class PersonRepoTest {
     lateinit var personRepo: PersonRepo
 
     @Test
-    fun loadingTest() {
+    fun findByCountryTest() {
         personRepo.save(Person("number").apply { address = Address(country = "China") })
         var person = personRepo.findByCountry("China", PageRequest.of(0, 10))
         assertNotNull(person)
