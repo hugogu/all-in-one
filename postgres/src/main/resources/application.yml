@@ -19,3 +19,7 @@ spring:
           lob:
             non_contextual_creation: true
     open-in-view: true
+crnk:
+  enabled: true
+  path-prefix: /api
+  default-page-limit: 100

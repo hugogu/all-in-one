@@ -32,9 +32,23 @@ bootJar {
 }
 sourceCompatibility = 1.8
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE'
+        mavenBom "io.crnk:crnk-bom:${CRNK_VERSION}"
+    }
+}
 
 dependencies {
+    compile "io.crnk:crnk-data-jpa"
+    compile 'io.crnk:crnk-setup-spring-boot2'
+    compile 'io.crnk:crnk-format-plain-json'
+    compile 'io.crnk:crnk-home'
     compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
     compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
