@@ -1,3 +1,4 @@
 rootProject.name = 'all-in-one'
 
 include 'postgres'
+include 'leetcode'
